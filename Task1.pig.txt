@@ -1,0 +1,5 @@
+file = LOAD '/home/acadgild/Pig/Nine/HAsignNineTwo/studentDS' USING PigStorage(',') AS (Name:chararray,ColUnder:chararray,Dob:chararray,Stream:Chararray,Grade:float,State:Chararray,City:chararray);
+result = FILTER file By Grade<5;
+group_all = GROUP result  ALL;
+count_grouped_reocrd = FOREACH group_all GENERATE group,COUNT($1);
+dump count_grouped_reocrd;
